@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:100,300,400,700,900" rel="stylesheet">
+
+        <title>Tab Tracker</title>
+
+        <script src="popup.js"></script>
+        <link rel="stylesheet" href="../style.css">
+    </head>
+    
+    <body>
+        <div class="header">
+            <h1 class="header__title">Tab Tracker</h1>
+            <button class="" id="header__icon">Settings</button>
+        </div>
+
+        <select class="dropdown">
+            <option value="dropdown__date-asc">Date Asc.</option>
+            <option value="dropdown__date-desc">Date Desc.</option>
+            <option value="dropdown__topic-asc">Topic Asc.</option>
+            <option value="dropdown__topic-desc">Topic Desc.</option>
+            <option value="dropdown__ratings-asc">Ratings Asc.</option>
+            <option value="dropdown__ratings-desc">Ratings Desc.</option>
+        </select>
+        
+        <h5 class="topic">
+            Topic: <span class="topic__name"> </span><input type="text" class="topic__entry" name="topic" placeholder="Your Topic"/>
+        </h5>
+        
+        <div class="saved-tabs">
+        </div>
+        
+        <div class="tab-item">
+            <h3><a href=""> tab name as link</a></h3>
+            <h4>time added</h4>
+            <h4><a href=""> link name below </a></h4>
+            <h4> ★★★★★ </h4>
+        </div>
+
+        <button class="" id="add-tab">add new</button>
+        <output for="" name="" id=""></output>
+
+        <script src="popup.js"></script>
+
+        <a class="new-page" href="../add_page/add_page.html">new page button</a>
+    </body>
+</html>

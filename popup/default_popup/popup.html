@@ -10,47 +10,42 @@
         <title>Tab Tracker</title>
 
         <script src="popup.js"></script>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="../style.css">
     </head>
     
     <body>
-        <header class="header">
+        <div class="header">
             <h1 class="header__title">Tab Tracker</h1>
-        </header>
-
-        <div id="heading">
-            <h6>
-                tab tracker
-                <button class="" id="settings-icon">settings icon</button>
-            </h6>
+            <button class="" id="header__icon">Settings</button>
         </div>
-        <div class="tab-body">
-            <select id="dropdown">
-                <option value="date-asc"> date ascending </option>
-                <option value="date-desc"> date descending </option>
-                <option value="alphabetical"> alphabetically </option>
-                <option value="ratings-asc"> ratings ascending </option>
-                <option value="ratings-desc"> ratings descending </option>
-            </select>
-            <h5>
-                Topic: <span id="topic-name"> </span><input type="text" id="topic" name="topic" />
-            </h5>
-            
-            <div class="saved-tabs">
-            </div>
-            
-            <div class="tab-item">
-                <h3><a href=""> tab name as link</a></h3>
-                <h4>time added</h4>
-                <h4><a href=""> link name below </a></h4>
-                <h4> ★★★★★ </h4>
-            </div>
 
-            <button class="" id="add-tab">add new</button>
-            <output for="" name="" id=""></output>
-
-            <script src="popup.js"></script>
+        <select class="dropdown">
+            <option value="dropdown__date-asc">Date Asc.</option>
+            <option value="dropdown__date-desc">Date Desc.</option>
+            <option value="dropdown__topic-asc">Topic Asc.</option>
+            <option value="dropdown__topic-desc">Topic Desc.</option>
+            <option value="dropdown__ratings-asc">Ratings Asc.</option>
+            <option value="dropdown__ratings-desc">Ratings Desc.</option>
+        </select>
+        
+        <h5 class="topic">
+            Topic: <span class="topic__name"> </span><input type="text" class="topic__entry" name="topic" placeholder="Your Topic"/>
+        </h5>
+        
+        <div class="saved-tabs">
         </div>
+        
+        <div class="tab-item">
+            <h3><a href=""> tab name as link</a></h3>
+            <h4>time added</h4>
+            <h4><a href=""> link name below </a></h4>
+            <h4> ★★★★★ </h4>
+        </div>
+
+        <button class="" id="add-tab">add new</button>
+        <output for="" name="" id=""></output>
+
+        <script src="popup.js"></script>
 
         <a class="new-page" href="../add_page/add_page.html">new page button</a>
     </body>

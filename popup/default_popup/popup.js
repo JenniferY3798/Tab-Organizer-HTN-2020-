@@ -1,6 +1,5 @@
 // button for saving the link after all info in chosen
 var addTab = document.querySelector('#add-tab');
-var topic = document.querySelector('#topic');
 //var links = document.querySelector('#links') // get list of links
 
 // display links
@@ -34,13 +33,17 @@ addTab.onclick = function () {
         active: true,
         currentWindow: true
     }, function (tabs) {
-        //let url = tabs[0].url;
+        // get data from html
+        let topic = document.querySelector('#topic'); // or however topics are gotten
+        let rating = ""; // however star ratings are gotten
+        let comment = ""; // however comments are gotten
         let link = {
             "id": tabs[0].id,
             "url": tabs[0].url,
-            "title": tabs[0].title
+            "title": tabs[0].title,
+            "rating": rating,
+            "comment": comment,
         };
-        console.log(link); // testing
 
         // get stored links for the specific topic and add new link
         chrome.storage.local.get(topic, links => {

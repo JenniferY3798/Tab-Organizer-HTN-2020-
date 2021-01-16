@@ -9,7 +9,6 @@
 
         <title>Tab Tracker</title>
 
-        <script src="popup.js"></script>
         <link rel="stylesheet" href="../style.css">
     </head>
     
@@ -27,15 +26,15 @@
             <option value="dropdown__ratings-asc">Ratings Asc.</option>
             <option value="dropdown__ratings-desc">Ratings Desc.</option>
         </select>
-        
+
         <h5 class="topic">
-            Topic: <span class="topic__name"> </span><input type="text" class="topic__entry" name="topic" placeholder="Your Topic"/>
+            Topic: <span class="topic__name"> </span><input type="text" class="topic__entry" name="topic" placeholder="Your Topic" />
         </h5>
-        
+
         <div class="saved-tabs">
         </div>
-        
-        <div class="tab-item">
+
+        <div class="tab-item" id="links">
             <h3><a href=""> tab name as link</a></h3>
             <h4>time added</h4>
             <h4><a href=""> link name below </a></h4>
@@ -48,5 +47,6 @@
         <script src="popup.js"></script>
 
         <a class="new-page" href="../add_page/add_page.html">new page button</a>
+        <script src="popup.js"></script>
     </body>
 </html>

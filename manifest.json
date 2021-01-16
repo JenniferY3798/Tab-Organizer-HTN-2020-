@@ -1,0 +1,21 @@
+{
+  "name": "Tab Organizer HTN 2020",
+  "version": "0.0.1",
+  "description": "Group and organize tabs!",
+  "manifest_version": 1,
+  "background": {
+    "scripts": [ "background.js" ],
+    "persistent": true
+  },
+  "page_action": {
+    "default_popup": "popup/popup.html"
+  },
+  "permissions": [ "tabs", "activeTab", "declarativeContent", "storage" ],
+  "content_scripts": [
+    {
+      "matches": [ "<all_urls>" ],
+      "js": [ "tabs.js" ],
+      "css": [ "tabs.css" ]
+    }
+  ]
+}

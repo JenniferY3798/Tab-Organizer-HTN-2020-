@@ -8,6 +8,7 @@
  * - links: dictionary of topics to links of the corresponding topic
  * - linkCount: total num of links
  */
+var links = []
 
 // MOSTLY COPIED FROM WORKSHOP TEMPLATE
 function add_link(links) {
@@ -33,8 +34,10 @@ function add_link(links) {
 
 //TAKEN FROM WORKSHOP TEMPLATE
 function init_links() {
-    let url = document.URL; // idk what this does tbh
-    let linksList = document.getElementById("links"); // element id still tbd
+    //let url = document.URL; // idk what this does tbh
+    let topic = document.querySelector('#topic')
+    //let linksList = document.getElementById("links"); // element id still tbd
+    let tabsList = []
     chrome.storage.local.get(topic, links => {
         if (links[topic]) { // if there are links in for the specific topic
             add_link(links[topic]);
@@ -47,16 +50,17 @@ init_links()
 
 // FOLLOWING IS TAKEN FROM WORKSHOP
 // TODO: Add Message Event Listener to Prompt Sticky Note Functions
-//chrome.runtime.onMessage.addListener(
-//    (request, sender, sendResponse) => {
-//        if (request.action == 'add') {
-//            add_links(request.);
-//            sendResponse({ status: "complete" });
-//        } else if (request.action == 'clear') {
-//            clear_notes();
-//            sendResponse({ status: "complete" });
-//        } else {
-//            sendResponses({ status: "error" });
-//        }
-//    }
-//)
+chrome.runtime.onMessage.addListener(
+    (request, sender, sendResponse) => {
+        if (request.action == 'add') {
+            add_links(request.links);
+            sendResponse({ status: "complete" });
+        } else {
+            sendResponses({ status: "error" });
+        }
+        //else if (request.action == 'clear') {
+        //    clear_notes();
+        //    sendResponse({ status: "complete" });
+        //}
+        
+    })

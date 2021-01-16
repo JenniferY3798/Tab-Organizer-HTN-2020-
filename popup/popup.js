@@ -1,9 +1,9 @@
 // button for saving the link after all info in chosen
-var saveLink = document.querySelector('#save-link');
+var addTab = document.querySelector('#add-tab');
 let topics = [];
 
 // saving info to storage
-saveLink.onclick = function () {
+addTab.onclick = function () {
     chrome.tabs.query({
         active: true,
         currentWindow: true

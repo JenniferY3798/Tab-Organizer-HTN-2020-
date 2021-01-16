@@ -1,0 +1,22 @@
+{
+  "name": "tab_tracker",
+  "version": "1.0.0",
+  "description": "A productivity Chrome extension.",
+  "main": "background.js",
+  "scripts": {
+    "compile": "node-sass popup/sass/main.scss popup/popup.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JenniferY3798/Tab-Organizer-HTN-2020-.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JenniferY3798/Tab-Organizer-HTN-2020-/issues"
+  },
+  "homepage": "https://github.com/JenniferY3798/Tab-Organizer-HTN-2020-#readme",
+  "dependencies": {
+    "node-sass": "^5.0.0"
+  }
+}

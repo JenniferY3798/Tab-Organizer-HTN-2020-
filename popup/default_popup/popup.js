@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 // button for saving the link after all info in chosen
 var addTab = document.querySelector('#add-tab');
 let topics = [];
@@ -37,6 +36,3 @@ addTab.onclick = function () {
     });
     location.reload();
 };
-=======
-// JavaScript source code
->>>>>>> origin/main

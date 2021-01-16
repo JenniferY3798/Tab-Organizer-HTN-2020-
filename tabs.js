@@ -3,19 +3,29 @@
  * - date
  * - url (tab.url)
  * - title of page (tab.title)
+ * Each link/tab is in a dictionary w "id", "url", "title"
  * 
  * Current data collection:
  * - links: dictionary of topics to links of the corresponding topic
  * - linkCount: total num of links
  */
-var links = []
 
 // MOSTLY COPIED FROM WORKSHOP TEMPLATE
 function add_link(links) {
-//    var body = document.getElementByTagName("body")[0];
+    var body = document.getElementByTagName("body")[0];
+
+    var linkNode = document.createElement("div");
+    var textNode = document.createTextNode("Success!");
+    linkNode.appendChild(textNode);
+    var element = document.getElementById("tab-item");
+    element.appendChild(linkNode);
+    //linkNode.setAttribute("id", "link-1");
+    //linkNode.setAttribute("class", "link-class");
+    //linkNode.innerText = "Success!";
+    //body.prepend(linkNode);
     
-//    for (let i = 0; i < links.length; i++) {
-//        linkCount += 1;
+    //for (let i = 0; i < links.length; i++) {
+    //    linkCount += 1;
 //        var linkNode = document.createElement("div");
 //        linkNode.setAttribute("id", "link-" + sourceCount);
 //        linkeNode.setAttribute("class", "link-class");

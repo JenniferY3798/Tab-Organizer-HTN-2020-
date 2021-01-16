@@ -2,7 +2,7 @@
   "name": "Tab Organizer HTN 2020",
   "version": "0.0.1",
   "description": "Group and organize tabs!",
-  "manifest_version": 1,
+  "manifest_version": 2,
   "background": {
     "scripts": [ "background.js" ],
     "persistent": true

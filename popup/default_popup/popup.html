@@ -13,48 +13,88 @@
     </head>
     
     <body>
-        <div class="header">
+        <!--########################################-->
+        <!---------------MAIN PAGE-------------------->
+        <!--########################################-->
+        <div id="default__page">
+            <div class="header">
 
-            <p class="header__title">Tab Tracker</p>
-            <div class="header__settings">
+                <p class="header__title">Tab Tracker</p>
+                <!--<div class="header__settings">
                 <input type="image" src="../../img/settings.png" id="" alt="Settings">
+            </div>-->
             </div>
-        </div>
 
-        <div class="container">
-            <select class="dropdown">
-                <option value="dropdown__date-asc">Date Asc.</option>
-                <option value="dropdown__date-desc">Date Desc.</option>
-                <option value="dropdown__topic-asc">Topic Asc.</option>
-                <option value="dropdown__topic-desc">Topic Desc.</option>
-                <option value="dropdown__ratings-asc">Ratings Asc.</option>
-                <option value="dropdown__ratings-desc">Ratings Desc.</option>
-            </select>
-        </div>
-
-        <h5 class="topic">
-            Topic: <span class="topic__name"> </span><input id="topic_box" type="text" class="topic__entry" name="topic" placeholder="Your Topic" />
-        </h5>
-
-        <div class="content">
-            <div class="content__tabs" id="links">
-                <!-- <h3><a href=""> tab name as link</a></h3>
-            <h4>time added</h4>
-            <h4><a href=""> link name below </a></h4>
-            <h4> ★★★★★ </h4> -->
+            <div class="container">
+                <select class="dropdown">
+                    <option value="dropdown__date-asc">Date Asc.</option>
+                    <option value="dropdown__date-desc">Date Desc.</option>
+                    <option value="dropdown__topic-asc">Topic Asc.</option>
+                    <option value="dropdown__topic-desc">Topic Desc.</option>
+                    <option value="dropdown__ratings-asc">Ratings Asc.</option>
+                    <option value="dropdown__ratings-desc">Ratings Desc.</option>
+                </select>
             </div>
+
+            <h5 class="topic">
+                Topic: <span class="topic__name"> </span><input id="topic_box" type="text" class="topic__entry" name="topic" placeholder="Your Topic" />
+            </h5>
+
+            <div class="content">
+                <div class="content__tabs" id="links">
+                    <!-- <h3><a href=""> tab name as link</a></h3>
+                <h4>time added</h4>
+                <h4><a href=""> link name below </a></h4>
+                <h4> ★★★★★ </h4> -->
+                </div>
+            </div>
+
+            <!-- <button class="" id="add-tab" href="../add_page/add_page.html">add new</button> -->
+            <!--<button class="" id="add-tab">add new</button>-->
+            <button id="remove-tab">remove tab</button> <!--remove later-->
+            <button id="clear-all">clear all</button> <!--remove later-->
+            <!--<input type="image" src="../../img/edit.png" id="edit-tab" alt="Edit Tab" class="edit">-->
+            <input type="image" src="../../img/add.png" id="add-tab-button" alt="Add New" class="add" href="../add_page/add_page.html">
+
+            <output for="" name="" id=""></output>
+
         </div>
 
-        <!-- <button class="" id="add-tab" href="../add_page/add_page.html">add new</button> -->
+        <!--########################################-->
+        <!------------ADD TAB PAGE------------------>
+        <!--########################################-->
+        <div id="add__page" style="display: none">
+            <div class="header">
+                <p class="header__title">
+                    Add Current Tab
+                </p>
+            </div>
 
-        <button class="" id="add-tab-button">add new</button>
-        <button id="remove-tab">remove tab</button> <!--remove later-->
-        <button id="clear-all">clear all</button> <!--remove later-->
+            <div class="content">
+                <div class="content__tabs" id="input-info">
+                    <h5 class="topic">
+                        Topic: <span class="topic__name"> </span><input id="input-topic" type="text" class="topic__entry" name="topic" placeholder="Your Topic" />
+                    </h5>
+                    <br>
+                    <h5 class="comment">
+                        Comment: <span class="comment__here"> </span><input id="input-comment" type="text" class="comment__entry" name="comment" placeholder="Your Comment" />
+                    </h5>
+                    <!--<br>
+                <h5 class="doi">
+                    DOI: <span class="doi__here"> </span><input id="input-doi" type="text" class="doi__entry" name="doi" placeholder="Your DOI" />
+                </h5>-->
+                    <br>
+                    <h5 class="rating">
+                        Rating: <span class="rating__here"> </span><input id="input-rating" type="text" class="rating__entry" name="rating" placeholder="Your Rating" />
+                    </h5>
+                    <br>
+                </div>
+            </div>
+            <button id="add-tab">Add Tab</button>
 
-        <input type="image" src="../../img/edit.png" id="edit-tab" alt="Edit Tab" class="edit">
-        <input type="image" src="../../img/add.png" id="add-tab" alt="Add New" class="add">
-
-        <output for="" name="" id=""></output>
+            <!--<script src="popup.js"></script>-->
+            <!--<script src="add_page.js"></script>-->
+        </div>
 
         <script src="popup.js"></script>
 

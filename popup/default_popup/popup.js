@@ -1,5 +1,6 @@
 // button for saving the link after all info in chosen
-var addTab = document.querySelector('#add-tab-button');
+var addTabButton = document.querySelector('#add-tab-button');
+var addTab = document.querySelector('#add-tab');
 var removeTab = document.querySelector('#remove-tab');
 //var removeTopic = document.querySelector('#remove-topic');
 var clearAll = document.querySelector('#clear-all');
@@ -28,7 +29,7 @@ chrome.tabs.query({
                 var li = document.createElement("li");
                 //li.setAttribute("class", "link-class");
                 li.appendChild(document.createTextNode(topic_links[i].title + ' - ' + topic_links[i].url)); // add title
-                li.appendChild(document.createTextNode('Time: ' + topic_links[i].date)); // add date
+                li.appendChild(document.createTextNode('Time: ' + topic_links[i].date_string)); // add date
                 div.appendChild(li);
             }
 
@@ -38,66 +39,67 @@ chrome.tabs.query({
     });
 });
 
+// move to add tab page
+addTabButton.onclick = function () {
+    document.getElementById('default__page').style.display = "none";
+    document.getElementById('add__page').style.display = "initial";
+}
+
 // saving info to storage
 addTab.onclick = function () {
     chrome.tabs.query({
         active: true,
         currentWindow: true
     }, function (tabs) {
-            // get data from html
-            let topic = document.getElementById('topic_box').value; // or however topics are gotten
-            let rating = ""; // however star ratings are gotten
-            let comment = ""; // however comments are gotten
-            let date = new Date();
-            let date_string = ':' + date.getMinutes().toString();
-            if (date.getHours() > 12) {
-                date_string = (date.getHours() - 12).toString() + date_string + ' PM';
-            } else {
-                date_string = date.getHours().toString() + ' AM';
-            }
-            let link = {
-                "id": tabs[0].id,
-                "url": tabs[0].url,
-                "title": tabs[0].title,
-                "rating": rating,
-                "comment": comment,
-                "date": date_string
-            };
+        // get data from html
+        let topic = document.getElementById('input-topic').value;
+        let rating = document.getElementById('input-rating').value;
+        let comment = document.getElementById('input-comment').value;
+        let date = new Date();
+        let date_string = date.toTimeString().slice(0, 5);
+        if (date.getHours() > 12) {
+            date_string += ' PM';
+        } else {
+            date_string += ' AM';
+        }
+        let link = {
+            "id": tabs[0].id,
+            "url": tabs[0].url,
+            "title": tabs[0].title,
+            "rating": rating,
+            "comment": comment,
+            "date": date,
+            "date_string": date_string
+        };
 
-            // get stored links for the specific topic and add new link
-            chrome.storage.local.get(null, all_links => {
-                var to_be_added = true;
-                if (all_links[topic]) {
-                    // check if link is already added in that topic
-                    for (var topic_link in all_links[topic]) {
-                        if (topic_link.id == link.id) {
-                            to_be_added = false;
-                        }
+        // get stored links for the specific topic and add new link
+        chrome.storage.local.get(null, all_links => {
+            var to_be_added = true;
+            if (all_links[topic]) {
+                // check if link is already added in that topic
+                for (var topic_link in all_links[topic]) {
+                    if (topic_link.id == link.id) {
+                        to_be_added = false;
                     }
-
-                    // add link if not already added
-                    if (to_be_added) {
-                        all_links[topic].push(link);
-                    }
-                
-                } else {
-                    all_links[topic] = [link];
                 }
 
-                // set stored links to include added link
-                chrome.storage.local.set(all_links);
+                // add link if not already added
+                if (to_be_added) {
+                    all_links[topic].push(link);
+                }
 
-                // send message (to be processed during runtime w listener)
-                //chrome.tabs.sendMessage(tabs[0].id,
-                //    // following is the message to be processed
-                //    {
-                //        action: "add",
-                //        links: [link]
-                //    }, _ => {
-                //        console.log("Added Link!");
-                //    });
+            } else {
+                all_links[topic] = [link];
+            }
+
+            // set stored links to include added link
+            chrome.storage.local.set(all_links);
             });
     });
+
+    // switch to default page
+    document.getElementById('add__page').style.display = "none";
+    document.getElementById('default__page').style.display = "initial";
     location.reload();
 };
 
@@ -111,19 +113,9 @@ removeTab.onclick = function () {
             // TODO: insert stuff
 
             // get data from html
-            chrome.storage.local.get(null, all_links => {
-                all_links[topic];
-            })
-            //let topic = document.querySelector('#topic'); // or however topics are gotten
-            //let rating = ""; // however star ratings are gotten
-            //let comment = ""; // however comments are gotten
-            //let link = {
-            //    "id": tabs[0].id,
-            //    "url": tabs[0].url,
-            //    "title": tabs[0].title,
-            //    "rating": rating,
-            //    "comment": comment,
-            //};
+            //chrome.storage.local.get(null, all_links => {
+            //    all_links[topic];
+            //})
 
             //var remove_lst = {}
             //chrome.storage.local.get(null, all_links => {

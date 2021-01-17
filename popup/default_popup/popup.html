@@ -60,7 +60,7 @@
         <!--########################################-->
         <!------------ADD TAB PAGE------------------>
         <!--########################################-->
-        <div id="add__page" style="display: none">
+        <div class="add__page" id="add__page" style="display: none">
             <div class="header">
                 <p class="header__title">
                     Add Current Tab
@@ -70,11 +70,11 @@
             <div class="content">
                 <div class="content__tabs" id="input-info">
                     <h5 class="topic">
-                        Topic: <span class="topic__name"> </span><input id="input-topic" type="text" class="topic__entry" name="topic" placeholder="Your Topic" />
+                        topic: <span class="topic__name"> </span><br><input id="input-topic" type="text" class="topic__entry" name="topic" placeholder="Your Topic" />
                     </h5>
                     <br>
                     <h5 class="comment">
-                        Comment: <span class="comment__here"> </span><input id="input-comment" type="text" class="comment__entry" name="comment" placeholder="Your Comment" />
+                        comment: <span class="comment__here"> </span><br><input id="input-comment" type="text" class="comment__entry" name="comment" placeholder="Your Comment" />
                     </h5>
                     <!--<br>
                 <h5 class="doi">
@@ -82,13 +82,14 @@
                 </h5>-->
                     <br>
                     <h5 class="rating">
-                        Rating: <span class="rating__here"> </span><input id="input-rating" type="text" class="rating__entry" name="rating" placeholder="Your Rating" />
+                        rating: <span class="rating__here"> </span><br><input id="input-rating" type="text" class="rating__entry" name="rating" placeholder="Your Rating" />
                     </h5>
                     <br>
                 </div>
+                <div class="add-button">
+                    <button id="add-tab" class="add-tab">Add Tab</button>
+                </div>
             </div>
-            <button id="add-tab">Add Tab</button>
-
             <!--<script src="popup.js"></script>-->
             <!--<script src="add_page.js"></script>-->
         </div>

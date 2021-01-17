@@ -37,8 +37,11 @@ chrome.tabs.query({
 
             // add placeholder delete button
             var btn = document.createElement("BUTTON");
+
             btn.innerHTML = "Delete Links";
             btn.setAttribute("id", topic + "-link-list");
+            btn.className = "delete-topic";
+            btn.innerHTML = "delete topic";
             //button.setAttribute("onclick", "delete_single_link(li.id)");
             div.appendChild(btn);
 
@@ -58,8 +61,8 @@ chrome.tabs.query({
 
                 // add link info
                 li.appendChild(document.createTextNode('\n' + 'Time: ' + topic_links[i].date_string)); // add date
-                li.appendChild(document.createTextNode('\n' + 'Comment: ' + topic_links[i].comment));
-                li.appendChild(document.createTextNode('\n' + 'Rating: ' + topic_links[i].rating));
+                li.appendChild(document.createTextNode('\n' + '  |  Comment: ' + topic_links[i].comment));
+                li.appendChild(document.createTextNode('\n' + '  |  Rating: ' + topic_links[i].rating));
 
                 li.setAttribute("id", topic + "-link-item-" + i);
 

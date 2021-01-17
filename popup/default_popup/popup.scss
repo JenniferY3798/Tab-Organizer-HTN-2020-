@@ -2,6 +2,7 @@ $color-background: #031926;
 $color-white: white;
 $color-light-blue: #ACD4DE;
 $color-bright-blue: #70DDFF;
+$color-medium-blue: #78a3ad;
 $color-dark-blue: #007792;
 $color-box-background: #EEF0F3;
 $color-grey: #7A7A7A;
@@ -25,6 +26,9 @@ body {
     display: flex;
     justify-content: space-between;
     width: 400px;
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
 }
 
 .container {
@@ -45,6 +49,7 @@ body {
     margin-top: 10px;
     overflow-y: scroll;
     height: 350px;
+    width: 375px;
 }
 
 .edit {
@@ -80,7 +85,7 @@ li {
 }
 
 ::-webkit-scrollbar {
-    width: 10px;
+    width: 7px;
 }
 
 ::-webkit-scrollbar-track {
@@ -94,5 +99,32 @@ li {
 }
   
 ::-webkit-scrollbar-thumb:hover {
-    background: $color-dark-blue;
+    background: $color-medium-blue;
+}
+
+.topic-names {
+    color: $color-bright-blue;
+    text-transform: lowercase;
+    letter-spacing: 2px;
+    padding-left: 20px;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.delete-topic {
+    border-radius: 5px;
+    background-color: $color-white;
+    color: $color-dark-blue;
+}
+
+@keyframes moveInLeft {
+    0% {
+      opacity: 0;
+      transform: translateX(-10rem);
+    } 80% {
+      transform: translateX(1rem);
+    } 100% {
+      opacity: 1;
+      transform: translate(0);
+    }
 }

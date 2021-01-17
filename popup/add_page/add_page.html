@@ -10,37 +10,36 @@
         <title>Add page</title>
 
         <link rel="stylesheet" href="../style.css">
+        <script src="add_page.js"></script>
     </head>
     
     <body>
         <div class="header">
-            <h3 class="header__title">Tab Tracker (details page)
-            </h3>
+            <p class="header__title">Tab Tracker (details page)
+            </p>
         </div>
 
-        <div class="tab-item" id="links">
-            <h3>
-                <a href=""> tab name as link</a> <h4>time added</h4>
-            </h3>
-            <h4><a href=""> link name below </a></h4>
-            <h4> ★★★★★ </h4>
+        <div class = "content">
+            <div class="content__tabs" id="links">
+                <h5 class="topic">
+                    Topic: <span class="topic__name"> </span><output type="text" class="topic__entry" name="topic" placeholder="Your Topic" />
+                </h5>
+                <br>
+                <h5 class="comment">
+                    Comment: <span class="comment__here"> </span><output type="text" class="comment__entry" name="comment" placeholder="Your Comment" />
+                </h5>
+                <br>
+                <h5 class="doi">
+                    DOI: <span class="doi__here"> </span><output type="text" class="doi__entry" name="doi" placeholder="Your DOI" />
+                </h5>
+                <br>
+                <h5 class="rating">
+                    Rating: <span class="rating__here"> </span><output type="text" class="rating__entry" name="rating" placeholder="Your Rating" />
+                </h5>
+                <br>
+            </div>
         </div>
-
-        <h5 class="topic">
-            Topic: <span class="topic__name"> </span><input type="text" class="topic__entry" name="topic" placeholder="Your Topic" />
-        </h5>
-
-        <h5 class="comment">
-            Comment: <span class="comment__here"> </span><input type="text" class="comment__entry" name="comment" placeholder="Your Comment" />
-        </h5>
-
-        <h5 class="doi">
-            DOI: <span class="doi__here"> </span><input type="text" class="doi__entry" name="doi" placeholder="Your DOI" />
-        </h5>
-
-        <h5 class="rating">
-            Rating: <span class="rating__here"> </span><input type="text" class="rating__entry" name="rating" placeholder="Your Rating" />
-        </h5>
+        <button id="remove-tab">remove tab</button> <!--remove later-->
 
         <script src="popup.js"></script>
     </body>

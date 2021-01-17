@@ -38,7 +38,9 @@ chrome.tabs.query({
             // add button
             //btn.setAttribute("id", topic + "-link-list");
             //var btn = document.createElement("BUTTON");
-            var delete_links = document.createElement('img')
+            var delete_links = document.createElement('input');
+            delete_links.type = "image";
+            delete_links.alt = "Delete Links";
             delete_links.src = '../../img/delete.png';
             delete_links.className = "delete-topic";
             delete_links.id = topic + "-link-list";
@@ -73,8 +75,10 @@ chrome.tabs.query({
                 //var button = document.createElement("BUTTON");
                 //button.innerHTML = "Delete Link";
                 //button.setAttribute("onclick", "delete_single_link(li.id)");
-                var delete_link = document.createElement('img');
+                var delete_link = document.createElement('input');
+                delete_link.type = "image";
                 delete_link.src = '../../img/delete.png';
+                delete_link.alt = "Delete Link";
                 delete_link.class = "link-delete-button-class";
                 delete_link.id = topic + "-link-delete-item-" + topic_links[i].id.toString();
                 li.appendChild(delete_link);
@@ -89,7 +93,7 @@ chrome.tabs.query({
 
 
 // delete this specific link
-var buttons = document.querySelectorAll(".link-delete-button-class");
+var buttons = document.querySelectorAll("input.link-delete-button-class");
 const button_str = "-link-delete-item-";
 for (var button in buttons) {
     button.onclick = function () {
@@ -166,10 +170,10 @@ addTab.onclick = function () {
         // get stored links for the specific topic and add new link
         chrome.storage.local.get(null, all_links => {
             var to_be_added = true;
-            if (all_links[topic]) {
+            if (topic in all_links) {
                 // check if link is already added in that topic
                 for (var topic_link in all_links[topic]) {
-                    if (topic_link.id == link.id) {
+                    if (topic_link.id == tabs[0].id) {
                         to_be_added = false;
                     }
                 }

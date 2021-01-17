@@ -57,7 +57,7 @@ chrome.tabs.query({
                 var linkText = document.createTextNode(topic_links[i].title );
                 //+ ' - ' + topic_links[i].url
                 linking.setAttribute('href',topic_links[i].url);
-                linking.style.color = "#152238";
+                linking.style.color = "#00111B";
                 linking.appendChild(linkText);
                 //li.setAttribute("class", "link-class");
                 li.appendChild(linking); // add title

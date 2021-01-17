@@ -1,13 +1,35 @@
-.body {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 10px;
+* {
   margin: 0px;
-  padding: 0px; }
+  padding: 0px;
+  box-sizing: border-box; }
+
+body {
+  font-family: "Open Sans", sans-serif; }
 
 .header {
   width: 350px;
   height: 50px;
-  background-color: #658f6c; }
-  .header .title {
-    text-align: center;
-    display: block; }
+  font-size: 18px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between; }
+
+.container {
+  padding-left: 20px;
+  padding-right: 20px; }
+  .container .dropdown {
+    width: 310px; }
+
+.content {
+  background-color: #c4c4c4;
+  margin-top: 10px;
+  overflow-y: scroll;
+  height: 350px; }
+
+.edit {
+  padding: 10px;
+  float: left; }
+
+.add {
+  padding: 10px;
+  float: right; }

@@ -32,7 +32,10 @@ chrome.tabs.query({
                     linking.appendChild(linkText);
                 //li.setAttribute("class", "link-class");
                 li.appendChild(linking); // add title
-                li.appendChild(document.createTextNode('Time: ' + topic_links[i].date)); // add date
+                var linebreak = document.createElement('br');
+                li.appendChild(linebreak);
+
+                li.appendChild(document.createTextNode('\n'+'Time: ' + topic_links[i].date)); // add date
                 div.appendChild(li);
             }
             //}

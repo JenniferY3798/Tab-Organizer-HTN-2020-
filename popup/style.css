@@ -16,7 +16,7 @@ body {
   justify-content: space-between;
   width: 400px;
   animation-name: moveInLeft;
-  animation-duration: 1s;
+  animation-duration: 0.7s;
   animation-timing-function: ease-out; }
 
 .container {
@@ -90,6 +90,10 @@ li {
   border-radius: 5px;
   background-color: white;
   color: #007792; }
+
+.delete-topic:hover {
+  transform: translateY(1px);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1); }
 
 @keyframes moveInLeft {
   0% {

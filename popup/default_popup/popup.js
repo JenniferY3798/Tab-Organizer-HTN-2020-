@@ -20,12 +20,19 @@ chrome.tabs.query({
             // add topic title
             var div = document.createElement("div");
             div.setAttribute("class", "topic_list");
+
+            // add topic name
+            var topicName = document.createElement("p");
+            topicName.innerText = topic;
+            topicName.setAttribute("class", "topic-names");
+            div.appendChild(topicName);
+
             // add placeholder delete button
             var btn = document.createElement("BUTTON");
             btn.innerHTML = "Delete Links";
             //button.setAttribute("onclick", "delete_single_link(li.id)");
             div.appendChild(btn);
-            div.appendChild(document.createTextNode(topic));
+
             links.appendChild(div);
 
             // add links under this topic
@@ -64,8 +71,8 @@ chrome.tabs.query({
 // delete all links for a specific topic
 
 
-//// delete this specific link
-// var button = createElement("BUTTON");
+// delete this specific link
+//var button = createElement("BUTTON");
 //button.onclick = function () {
 ////    chrome.tabs.query({
 ////        active: true,
@@ -206,3 +213,4 @@ clearAll.onclick = function () {
     }),
     location.reload();
 }
+

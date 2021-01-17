@@ -26,12 +26,14 @@ chrome.tabs.query({
             // add links under this topic
             for (var i = 0; i < topic_links.length; i++) {
                 var li = document.createElement("li");
+                    var linking = document.createElement("a");
+                    var linkText = document.createTextNode(topic_links[i].title + ' - ' + topic_links[i].url);
+                    linking.setAttribute('href',topic_links[i].url);
+                    linking.appendChild(linkText);
                 //li.setAttribute("class", "link-class");
-                li.appendChild(document.createTextNode(topic_links[i].title + ' - ' + topic_links[i].url)); // add title
+                li.appendChild(linking); // add title
                 div.appendChild(li);
             }
-
-            
             //}
         }
     });

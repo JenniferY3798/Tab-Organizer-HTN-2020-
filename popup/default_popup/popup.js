@@ -16,7 +16,6 @@ chrome.tabs.query({
     chrome.storage.local.get(null, all_links => {
         for (var topic in all_links) {
             topic_links = all_links[topic]; // list of links for specific topic
-            //if (all_links[topic]) {
 
             // add topic title
             var div = document.createElement("div");
@@ -27,14 +26,19 @@ chrome.tabs.query({
             // add links under this topic
             for (var i = 0; i < topic_links.length; i++) {
                 var li = document.createElement("li");
+                var linking = document.createElement("a");
+                var linkText = document.createTextNode(topic_links[i].title + ' - ' + topic_links[i].url);
+                linking.setAttribute('href',topic_links[i].url);
+                linking.appendChild(linkText);
                 //li.setAttribute("class", "link-class");
-                li.appendChild(document.createTextNode(topic_links[i].title + ' - ' + topic_links[i].url)); // add title
-                li.appendChild(document.createTextNode('Time: ' + topic_links[i].date_string)); // add date
+                li.appendChild(linking); // add title
+                var linebreak = document.createElement('br');
+                li.appendChild(linebreak);
+
+                li.appendChild(document.createTextNode('\n'+'Time: ' + topic_links[i].date_string)); // add date
+
                 div.appendChild(li);
             }
-
-            
-            //}
         }
     });
 });

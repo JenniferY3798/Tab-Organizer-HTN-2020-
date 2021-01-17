@@ -44,7 +44,6 @@ chrome.tabs.query({
                 li.appendChild(document.createTextNode('\n' + 'Time: ' + topic_links[i].date_string)); // add date
                 li.appendChild(document.createTextNode('\n' + 'Comment: ' + topic_links[i].comment));
                 li.appendChild(document.createTextNode('\n' + 'Rating: ' + topic_links[i].rating));
-                li.appendChild(document.createTextNode('\n' + 'Time: ' + topic_links[i].date_string)); // add date
 
                 li.setAttribute("id", topic + "-" + "link-item-" + i);
 

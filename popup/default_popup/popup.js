@@ -34,7 +34,8 @@ chrome.tabs.query({
                 li.appendChild(linking); // add title
                 var linebreak = document.createElement('br');
                 li.appendChild(linebreak);
-
+                li.appendChild(document.createTextNode('\n'+'Comment: ' + topic_links[i].comment));
+                li.appendChild(document.createTextNode('\n'+'Rating: ' + topic_links[i].rating));
                 li.appendChild(document.createTextNode('\n'+'Time: ' + topic_links[i].date_string)); // add date
 
                 div.appendChild(li);

@@ -42,8 +42,10 @@ chrome.tabs.query({
             for (var i = 0; i < topic_links.length; i++) {
                 var li = document.createElement("li");
                 var linking = document.createElement("a");
-                var linkText = document.createTextNode(topic_links[i].title + ' - ' + topic_links[i].url);
+                var linkText = document.createTextNode(topic_links[i].title );
+                //+ ' - ' + topic_links[i].url
                 linking.setAttribute('href',topic_links[i].url);
+                linking.style.color = "#152238";
                 linking.appendChild(linkText);
                 //li.setAttribute("class", "link-class");
                 li.appendChild(linking); // add title

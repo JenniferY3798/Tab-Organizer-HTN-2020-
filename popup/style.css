@@ -14,7 +14,10 @@ body {
   padding-right: 20px;
   display: flex;
   justify-content: space-between;
-  width: 400px; }
+  width: 400px;
+  animation-name: moveInLeft;
+  animation-duration: 1s;
+  animation-timing-function: ease-out; }
 
 .container {
   text-align: center; }
@@ -87,3 +90,13 @@ li {
   border-radius: 5px;
   background-color: white;
   color: #007792; }
+
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-10rem); }
+  80% {
+    transform: translateX(1rem); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }

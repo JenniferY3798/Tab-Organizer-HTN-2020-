@@ -207,3 +207,4 @@ clearAll.onclick = function () {
     }),
     location.reload();
 }
+

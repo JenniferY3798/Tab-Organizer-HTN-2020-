@@ -40,6 +40,10 @@ chrome.tabs.query({
                 var linebreak = document.createElement('br');
                 li.appendChild(linebreak);
 
+                // add link info
+                li.appendChild(document.createTextNode('\n' + 'Time: ' + topic_links[i].date_string)); // add date
+                li.appendChild(document.createTextNode('\n' + 'Comment: ' + topic_links[i].comment));
+                li.appendChild(document.createTextNode('\n' + 'Rating: ' + topic_links[i].rating));
                 li.appendChild(document.createTextNode('\n' + 'Time: ' + topic_links[i].date_string)); // add date
 
                 li.setAttribute("id", topic + "-" + "link-item-" + i);
@@ -62,26 +66,27 @@ chrome.tabs.query({
 
 
 //// delete this specific link
+// var button = createElement("BUTTON");
 //button.onclick = function () {
-//    chrome.tabs.query({
-//        active: true,
-//        currentWindow: true
-//    }, function (tabs) {
-//        var button.
-//        var removed_li = document.getElementById("");
+////    chrome.tabs.query({
+////        active: true,
+////        currentWindow: true
+////    }, function (tabs) {
+////        var button.
+////        var removed_li = document.getElementById("");
 
-//        //
+////        //
 
-//        // remove from storage
-//        topic_links.splice(i, 1);
-//        if (topic_links.length <= 0) {
-//            delete all_links['topic'];
-//            div.remove();
-//        }
+////        // remove from storage
+////        topic_links.splice(i, 1);
+////        if (topic_links.length <= 0) {
+////            delete all_links['topic'];
+////            div.remove();
+////        }
 
-//        chrome.storage.local.set(all_links);
+////        chrome.storage.local.set(all_links);
 
-//    })
+////    })
 //};
 
 // move to add tab page

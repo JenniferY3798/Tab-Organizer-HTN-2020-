@@ -33,7 +33,7 @@ body {
   background-color: #031926;
   margin-top: 10px;
   overflow-y: scroll;
-  height: 350px;
+  height: 320px;
   width: 375px; }
 
 .edit {
@@ -104,3 +104,13 @@ li {
   100% {
     opacity: 1;
     transform: translate(0); } }
+
+.menu {
+  padding: 20px;
+  display: inline;
+  display: flex;
+  justify-content: space-between; }
+  .menu .clear {
+    float: left; }
+  .menu .add {
+    float: right; }

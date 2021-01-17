@@ -28,11 +28,13 @@ chrome.tabs.query({
             div.appendChild(topicName);
 
             // add placeholder delete button
-            var btn = document.createElement("BUTTON");
-            btn.className = "delete-topic";
-            btn.innerHTML = "delete topic";
+            //var btn = document.createElement("BUTTON");
+            const delete_links = document.createElement('img')
+            delete_links.src = '../../img/delete.png';
+            //btn.className = "delete-topic";
+            //btn.innerHTML = "delete topic";
             //button.setAttribute("onclick", "delete_single_link(li.id)");
-            div.appendChild(btn);
+            div.appendChild(delete_links);
 
             links.appendChild(div);
 
@@ -50,18 +52,19 @@ chrome.tabs.query({
 
                 // add link info
                 li.appendChild(document.createTextNode('\n' + 'Time: ' + topic_links[i].date_string)); // add date
-                li.appendChild(document.createTextNode('\n' + '  |  Comment: ' + topic_links[i].comment));
-                li.appendChild(document.createTextNode('\n' + '  |  Rating: ' + topic_links[i].rating));
+                li.appendChild(document.createTextNode('\n' + '  |  Comment: ' + topic_links[i].comment + ' '));
+                li.appendChild(document.createTextNode('\n' + '  |  Rating: ' + topic_links[i].rating + ' '));
 
                 li.setAttribute("id", topic + "-" + "link-item-" + i);
 
                 // add placeholder delete button
-                var button = document.createElement("BUTTON");
-                button.innerHTML = "Delete Link";
-                button.setAttribute("id", topic + "-" + "link-delete-item-" + i);
+                //var button = document.createElement("BUTTON");
+                //button.innerHTML = "Delete Link";
+                //button.setAttribute("id", topic + "-" + "link-delete-item-" + i);
                 //button.setAttribute("onclick", "delete_single_link(li.id)");
-
-                li.appendChild(button);
+                const delete_link = document.createElement('img')
+                delete_link.src = '../../img/delete.png';
+                li.appendChild(delete_link);
 
                 div.appendChild(li);
             }

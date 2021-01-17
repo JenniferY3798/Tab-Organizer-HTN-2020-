@@ -32,6 +32,7 @@ chrome.tabs.query({
                     linking.appendChild(linkText);
                 //li.setAttribute("class", "link-class");
                 li.appendChild(linking); // add title
+                li.appendChild(document.createTextNode('Time: ' + topic_links[i].date)); // add date
                 div.appendChild(li);
             }
             //}
@@ -46,15 +47,23 @@ addTab.onclick = function () {
         currentWindow: true
     }, function (tabs) {
             // get data from html
-            let topic = document.getElementById('topic_box'); // or however topics are gotten
+            let topic = document.getElementById('topic_box').value; // or however topics are gotten
             let rating = ""; // however star ratings are gotten
             let comment = ""; // however comments are gotten
+            let date = new Date();
+            let date_string = ':' + date.getMinutes().toString();
+            if (date.getHours() > 12) {
+                date_string = (date.getHours() - 12).toString() + date_string + ' PM';
+            } else {
+                date_string = date.getHours().toString() + ' AM';
+            }
             let link = {
                 "id": tabs[0].id,
                 "url": tabs[0].url,
                 "title": tabs[0].title,
                 "rating": rating,
                 "comment": comment,
+                "date": date_string
             };
 
             // get stored links for the specific topic and add new link
@@ -72,11 +81,6 @@ addTab.onclick = function () {
                     if (to_be_added) {
                         all_links[topic].push(link);
                     }
-                    //if (all_links[topic].includes(link)) {
-                    //    // insert text saying it's already been added
-                    //} else {
-                    //    all_links[topic].push(link);
-                    //}
                 
                 } else {
                     all_links[topic] = [link];
@@ -112,18 +116,18 @@ removeTab.onclick = function () {
             chrome.storage.local.get(null, all_links => {
                 all_links[topic];
             })
-        //let topic = document.querySelector('#topic'); // or however topics are gotten
-        //let rating = ""; // however star ratings are gotten
-        //let comment = ""; // however comments are gotten
-        //let link = {
-        //    "id": tabs[0].id,
-        //    "url": tabs[0].url,
-        //    "title": tabs[0].title,
-        //    "rating": rating,
-        //    "comment": comment,
-        //};
+            //let topic = document.querySelector('#topic'); // or however topics are gotten
+            //let rating = ""; // however star ratings are gotten
+            //let comment = ""; // however comments are gotten
+            //let link = {
+            //    "id": tabs[0].id,
+            //    "url": tabs[0].url,
+            //    "title": tabs[0].title,
+            //    "rating": rating,
+            //    "comment": comment,
+            //};
 
-        //var remove_lst = {}
+            //var remove_lst = {}
             //chrome.storage.local.get(null, all_links => {
             //    //for (var topic in all_links) {
             //    //    //all_links.delete(topic);

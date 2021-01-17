@@ -29,7 +29,8 @@ chrome.tabs.query({
 
             // add placeholder delete button
             var btn = document.createElement("BUTTON");
-            btn.innerHTML = "Delete Links";
+            btn.className = "delete-topic";
+            btn.innerHTML = "delete topic";
             //button.setAttribute("onclick", "delete_single_link(li.id)");
             div.appendChild(btn);
 

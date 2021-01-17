@@ -1,8 +1,8 @@
 // button for saving the link after all info in chosen
-var addTab = document.querySelector('#add-tab');
+var addTab = document.querySelector('#add-tab-button');
 var removeTab = document.querySelector('#remove-tab');
+//var removeTopic = document.querySelector('#remove-topic');
 var clearAll = document.querySelector('#clear-all');
-//var links = document.querySelector('#links') // get list of links
 
 // display links
 chrome.tabs.query({
@@ -27,7 +27,7 @@ chrome.tabs.query({
             for (var i = 0; i < topic_links.length; i++) {
                 var li = document.createElement("li");
                 //li.setAttribute("class", "link-class");
-                li.appendChild(document.createTextNode(topic_links[i].title)); // add title
+                li.appendChild(document.createTextNode(topic_links[i].title + ' - ' + topic_links[i].url)); // add title
                 div.appendChild(li);
             }
 
@@ -43,39 +43,56 @@ addTab.onclick = function () {
         active: true,
         currentWindow: true
     }, function (tabs) {
-        // get data from html
-        let topic = document.getElementById('topic_box'); // or however topics are gotten
-        let rating = ""; // however star ratings are gotten
-        let comment = ""; // however comments are gotten
-        let link = {
-            "id": tabs[0].id,
-            "url": tabs[0].url,
-            "title": tabs[0].title,
-            "rating": rating,
-            "comment": comment,
-        };
+            // get data from html
+            let topic = document.getElementById('topic_box'); // or however topics are gotten
+            let rating = ""; // however star ratings are gotten
+            let comment = ""; // however comments are gotten
+            let link = {
+                "id": tabs[0].id,
+                "url": tabs[0].url,
+                "title": tabs[0].title,
+                "rating": rating,
+                "comment": comment,
+            };
 
-        // get stored links for the specific topic and add new link
-        chrome.storage.local.get(null, all_links => {
-            if (all_links[topic]) {
-                all_links[topic].push(link);
-            } else {
-                all_links[topic] = [link];
-            }
+            // get stored links for the specific topic and add new link
+            chrome.storage.local.get(null, all_links => {
+                var to_be_added = true;
+                if (all_links[topic]) {
+                    // check if link is already added in that topic
+                    for (var topic_link in all_links[topic]) {
+                        if (topic_link.id == link.id) {
+                            to_be_added = false;
+                        }
+                    }
 
-            // set stored links to include added link
-            chrome.storage.local.set(all_links);
+                    // add link if not already added
+                    if (to_be_added) {
+                        all_links[topic].push(link);
+                    }
+                    //if (all_links[topic].includes(link)) {
+                    //    // insert text saying it's already been added
+                    //} else {
+                    //    all_links[topic].push(link);
+                    //}
+                
+                } else {
+                    all_links[topic] = [link];
+                }
 
-            // send message (to be processed during runtime w listener)
-            //chrome.tabs.sendMessage(tabs[0].id,
-            //    // following is the message to be processed
-            //    {
-            //        action: "add",
-            //        links: [link]
-            //    }, _ => {
-            //        console.log("Added Link!");
-            //    });
-        });
+                // set stored links to include added link
+                chrome.storage.local.set(all_links);
+
+                // send message (to be processed during runtime w listener)
+                //chrome.tabs.sendMessage(tabs[0].id,
+                //    // following is the message to be processed
+                //    {
+                //        action: "add",
+                //        links: [link]
+                //    }, _ => {
+                //        console.log("Added Link!");
+                //    });
+            });
     });
     location.reload();
 };
@@ -86,7 +103,13 @@ removeTab.onclick = function () {
         active: true,
         currentWindow: true
     }, function (tabs) {
-        //// get data from html
+            // get tab/list item to be deleted
+            // TODO: insert stuff
+
+            // get data from html
+            chrome.storage.local.get(null, all_links => {
+                all_links[topic];
+            })
         //let topic = document.querySelector('#topic'); // or however topics are gotten
         //let rating = ""; // however star ratings are gotten
         //let comment = ""; // however comments are gotten

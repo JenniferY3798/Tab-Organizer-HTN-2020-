@@ -5,6 +5,14 @@ var removeTab = document.querySelector('#remove-tab');
 //var removeTopic = document.querySelector('#remove-topic');
 var clearAll = document.querySelector('#clear-all');
 
+//// get clicked button w jquery
+//$("#element").click(function () {
+//    $(this).data('clicked', true);
+//});
+//if ($('#element').data('clicked')) {
+//    window.alert('yes');
+//}
+
 // display links
 chrome.tabs.query({
     active: true,
@@ -27,12 +35,16 @@ chrome.tabs.query({
             topicName.setAttribute("class", "topic-names");
             div.appendChild(topicName);
 
-            // add placeholder delete button
+            // add button
+            //btn.setAttribute("id", topic + "-link-list");
             //var btn = document.createElement("BUTTON");
-            const delete_links = document.createElement('img')
+            var delete_links = document.createElement('img')
             delete_links.src = '../../img/delete.png';
+            delete_links.className = "delete-topic";
+            delete_links.id = topic + "-link-list";
             //btn.className = "delete-topic";
             //btn.innerHTML = "delete topic";
+
             //button.setAttribute("onclick", "delete_single_link(li.id)");
             div.appendChild(delete_links);
 
@@ -55,15 +67,16 @@ chrome.tabs.query({
                 li.appendChild(document.createTextNode('\n' + '  |  Comment: ' + topic_links[i].comment + ' '));
                 li.appendChild(document.createTextNode('\n' + '  |  Rating: ' + topic_links[i].rating + ' '));
 
-                li.setAttribute("id", topic + "-" + "link-item-" + i);
+                li.setAttribute("id", topic + "-link-item-" + topic_links[i].id.toString());
 
                 // add placeholder delete button
                 //var button = document.createElement("BUTTON");
                 //button.innerHTML = "Delete Link";
-                //button.setAttribute("id", topic + "-" + "link-delete-item-" + i);
                 //button.setAttribute("onclick", "delete_single_link(li.id)");
-                const delete_link = document.createElement('img')
+                var delete_link = document.createElement('img');
                 delete_link.src = '../../img/delete.png';
+                delete_link.class = "link-delete-button-class";
+                delete_link.id = topic + "-link-delete-item-" + topic_links[i].id.toString();
                 li.appendChild(delete_link);
 
                 div.appendChild(li);
@@ -76,28 +89,46 @@ chrome.tabs.query({
 
 
 // delete this specific link
-//var button = createElement("BUTTON");
-//button.onclick = function () {
-////    chrome.tabs.query({
-////        active: true,
-////        currentWindow: true
-////    }, function (tabs) {
-////        var button.
-////        var removed_li = document.getElementById("");
+var buttons = document.querySelectorAll(".link-delete-button-class");
+const button_str = "-link-delete-item-";
+for (var button in buttons) {
+    button.onclick = function () {
+        chrome.tabs.query({
+            active: true,
+            currentWindow: true
+        }, function (tabs) {
+                var end_i = button.id.lastIndexOf(button_str);
+                var topic = button.id.substring(0, end_i);
+                var id = button.id.substring(end_i + button_str.length - 1);
+                var link_element_id = topic + "-link-item-" + id;
 
-////        //
+                var li = document.getElementById(link_element_id);
+                li.remove();
 
-////        // remove from storage
-////        topic_links.splice(i, 1);
-////        if (topic_links.length <= 0) {
-////            delete all_links['topic'];
-////            div.remove();
-////        }
 
-////        chrome.storage.local.set(all_links);
+                chrome.storage.local.get(null, all_links => {
+                    var topic_list = all_links[topic];
+                    if (all_links[topic]) {
+                        for (var i = 0; i < topic_list.length; i++) {
+                            var tab = topic_list[i];
+                            if (tab.id == id) {
+                                all_links[topic].splice(i, 1);
+                            }
+                        }
+                    }
+                    // remove from storage
+                    if (all_links[topic].length <= 0) {
+                        delete all_links[topic];
+                        li.remove();
+                    }
 
-////    })
-//};
+                    chrome.storage.local.set(all_links);
+                })
+
+
+            })
+    };
+}
 
 // move to add tab page
 addTabButton.onclick = function () {

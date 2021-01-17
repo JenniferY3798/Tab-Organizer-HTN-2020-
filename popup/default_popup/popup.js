@@ -20,6 +20,11 @@ chrome.tabs.query({
             // add topic title
             var div = document.createElement("div");
             div.setAttribute("class", "topic_list");
+            // add placeholder delete button
+            var btn = document.createElement("BUTTON");
+            btn.innerHTML = "Delete Links";
+            //button.setAttribute("onclick", "delete_single_link(li.id)");
+            div.appendChild(btn);
             div.appendChild(document.createTextNode(topic));
             links.appendChild(div);
 
@@ -35,13 +40,49 @@ chrome.tabs.query({
                 var linebreak = document.createElement('br');
                 li.appendChild(linebreak);
 
-                li.appendChild(document.createTextNode('\n'+'Time: ' + topic_links[i].date_string)); // add date
+                li.appendChild(document.createTextNode('\n' + 'Time: ' + topic_links[i].date_string)); // add date
+
+                li.setAttribute("id", topic + "-" + "link-item-" + i);
+
+                // add placeholder delete button
+                var button = document.createElement("BUTTON");
+                button.innerHTML = "Delete Link";
+                button.setAttribute("id", topic + "-" + "link-delete-item-" + i);
+                //button.setAttribute("onclick", "delete_single_link(li.id)");
+
+                li.appendChild(button);
 
                 div.appendChild(li);
             }
         }
     });
 });
+
+// delete all links for a specific topic
+
+
+//// delete this specific link
+//button.onclick = function () {
+//    chrome.tabs.query({
+//        active: true,
+//        currentWindow: true
+//    }, function (tabs) {
+//        var button.
+//        var removed_li = document.getElementById("");
+
+//        //
+
+//        // remove from storage
+//        topic_links.splice(i, 1);
+//        if (topic_links.length <= 0) {
+//            delete all_links['topic'];
+//            div.remove();
+//        }
+
+//        chrome.storage.local.set(all_links);
+
+//    })
+//};
 
 // move to add tab page
 addTabButton.onclick = function () {
@@ -107,43 +148,43 @@ addTab.onclick = function () {
     location.reload();
 };
 
-// delete info from storage
-removeTab.onclick = function () {
-    chrome.tabs.query({
-        active: true,
-        currentWindow: true
-    }, function (tabs) {
-            // get tab/list item to be deleted
-            // TODO: insert stuff
+//// delete info from storage
+// function delete_single_link (id) {
+//    chrome.tabs.query({
+//        active: true,
+//        currentWindow: true
+//    }, function (tabs) {
+//            // get tab/list item to be deleted
+//            // TODO: insert stuff
 
-            // get data from html
-            //chrome.storage.local.get(null, all_links => {
-            //    all_links[topic];
-            //})
+//            // get data from html
+//            //chrome.storage.local.get(null, all_links => {
+//            //    all_links[topic];
+//            //})
 
-            //var remove_lst = {}
-            //chrome.storage.local.get(null, all_links => {
-            //    //for (var topic in all_links) {
-            //    //    //all_links.delete(topic);
-            //    //    //all_links[topic] = [];
-            //    //    delete all_links[topic];
+//            //var remove_lst = {}
+//            //chrome.storage.local.get(null, all_links => {
+//            //    //for (var topic in all_links) {
+//            //    //    //all_links.delete(topic);
+//            //    //    //all_links[topic] = [];
+//            //    //    delete all_links[topic];
 
-            //    //}
-            //    //chrome.storage.local.set(all_links, function () { console.log("yes") });
-            //    ////chrome.tabs.sendMessage(tabs[0].id, { action: "clear" }, _ => {
-            //    ////    console.log("Cleared page");
-            //    ////});
-            //    lst = all_links;
-            //});
-            //for (var topic in remove_lst) {
-            //    //all_links.delete(topic);
-            //    //all_links[topic] = [];
-            //    delete remove_lst[topic];
+//            //    //}
+//            //    //chrome.storage.local.set(all_links, function () { console.log("yes") });
+//            //    ////chrome.tabs.sendMessage(tabs[0].id, { action: "clear" }, _ => {
+//            //    ////    console.log("Cleared page");
+//            //    ////});
+//            //    lst = all_links;
+//            //});
+//            //for (var topic in remove_lst) {
+//            //    //all_links.delete(topic);
+//            //    //all_links[topic] = [];
+//            //    delete remove_lst[topic];
 
-            //}
-            //chrome.storage.local.set(remove_lst);
-        })
-    };
+//            //}
+//            //chrome.storage.local.set(remove_lst);
+//        })
+//    };
 
 // clear all data
 clearAll.onclick = function () {

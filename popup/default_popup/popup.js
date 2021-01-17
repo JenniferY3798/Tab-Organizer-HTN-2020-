@@ -21,7 +21,8 @@ chrome.tabs.query({
     let links = document.getElementById("links");
 
     // grab dictionary of all stored topics to list of links
-    chrome.storage.local.get(null, all_links => {
+        chrome.storage.local.get(null, all_links => {
+
         for (var topic in all_links) {
             topic_links = all_links[topic]; // list of links for specific topic
 
@@ -95,9 +96,8 @@ chrome.tabs.query({
 
 
 // delete this specific link
-var buttons = document.querySelectorAll("input.link-delete-button-class");
 const button_str = "-link-delete-item-";
-for (var button in buttons) {
+document.querySelectorAll("input.link-delete-button-class").forEach (button => {
     button.onclick = function () {
         chrome.tabs.query({
             active: true,
@@ -110,7 +110,6 @@ for (var button in buttons) {
 
                 var li = document.getElementById(link_element_id);
                 li.remove();
-
 
                 chrome.storage.local.get(null, all_links => {
                     var topic_list = all_links[topic];
@@ -134,7 +133,7 @@ for (var button in buttons) {
 
             })
     };
-}
+});
 
 // move to add tab page
 addTabButton.onclick = function () {

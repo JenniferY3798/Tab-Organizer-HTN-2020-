@@ -48,7 +48,7 @@ body {
     background-color: $color-background;
     margin-top: 10px;
     overflow-y: scroll;
-    height: 350px;
+    height: 320px;
     width: 375px;
 }
 
@@ -131,5 +131,20 @@ li {
     } 100% {
       opacity: 1;
       transform: translate(0);
+    }
+}
+
+.menu {
+    padding: 20px;
+    display: inline;
+    display: flex;
+    justify-content: space-between;
+
+    .clear {
+        float: left;
+    }
+
+    .add {
+        float: right;
     }
 }

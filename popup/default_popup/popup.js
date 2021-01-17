@@ -1,5 +1,3 @@
-import { ALL } from "dns";
-
 // button for saving the link after all info in chosen
 var addTabButton = document.querySelector('#add-tab-button');
 var addTab = document.querySelector('#add-tab');
@@ -37,15 +35,18 @@ chrome.tabs.query({
             topicName.setAttribute("class", "topic-names");
             div.appendChild(topicName);
 
-            // add placeholder delete button
-            var btn = document.createElement("BUTTON");
+            // add button
+            //btn.setAttribute("id", topic + "-link-list");
+            //var btn = document.createElement("BUTTON");
+            var delete_links = document.createElement('img')
+            delete_links.src = '../../img/delete.png';
+            delete_links.className = "delete-topic";
+            delete_links.id = topic + "-link-list";
+            //btn.className = "delete-topic";
+            //btn.innerHTML = "delete topic";
 
-            btn.innerHTML = "Delete Links";
-            btn.setAttribute("id", topic + "-link-list");
-            btn.className = "delete-topic";
-            btn.innerHTML = "delete topic";
             //button.setAttribute("onclick", "delete_single_link(li.id)");
-            div.appendChild(btn);
+            div.appendChild(delete_links);
 
             links.appendChild(div);
 
@@ -63,19 +64,20 @@ chrome.tabs.query({
 
                 // add link info
                 li.appendChild(document.createTextNode('\n' + 'Time: ' + topic_links[i].date_string)); // add date
-                li.appendChild(document.createTextNode('\n' + '  |  Comment: ' + topic_links[i].comment));
-                li.appendChild(document.createTextNode('\n' + '  |  Rating: ' + topic_links[i].rating));
+                li.appendChild(document.createTextNode('\n' + '  |  Comment: ' + topic_links[i].comment + ' '));
+                li.appendChild(document.createTextNode('\n' + '  |  Rating: ' + topic_links[i].rating + ' '));
 
                 li.setAttribute("id", topic + "-link-item-" + topic_links[i].id.toString());
 
                 // add placeholder delete button
-                var button = document.createElement("BUTTON");
-                button.innerHTML = "Delete Link";
-                button.setAttribute("id", topic + "-link-delete-item-" + topic_links[i].id.toString());
-                button.setAttribute("class", "link-delete-button-class");
+                //var button = document.createElement("BUTTON");
+                //button.innerHTML = "Delete Link";
                 //button.setAttribute("onclick", "delete_single_link(li.id)");
-
-                li.appendChild(button);
+                var delete_link = document.createElement('img');
+                delete_link.src = '../../img/delete.png';
+                delete_link.class = "link-delete-button-class";
+                delete_link.id = topic + "-link-delete-item-" + topic_links[i].id.toString();
+                li.appendChild(delete_link);
 
                 div.appendChild(li);
             }
